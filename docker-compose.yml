@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: soc-ai-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/logs.db:/app/logs.db
+      - ./backend/config.json:/app/config.json
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_BASE=/api
+    container_name: soc-ai-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always

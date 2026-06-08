@@ -1,0 +1,514 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-app: #090b11;
+  --bg-sidebar: #0f131f;
+  --bg-panel: rgba(17, 22, 37, 0.65);
+  --border-glow: rgba(127, 119, 221, 0.15);
+  --border-standard: rgba(240, 246, 252, 0.06);
+  
+  /* Text colors */
+  --text-main: #f0f6fc;
+  --text-muted: #8b949e;
+  
+  /* Accent colors */
+  --color-primary: #7F77DD;
+  --color-primary-glow: rgba(127, 119, 221, 0.3);
+  --color-normal: #1D9E75;
+  --color-fp: #EF9F27;
+  --color-attack: #E24B4A;
+  
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: var(--text-main);
+  background-color: var(--bg-app);
+}
+
+/* ==========================================================================
+   Light Mode Theme Overrides
+   ========================================================================== */
+
+body.light-mode {
+  --bg-app: #f1f3f9;
+  --bg-sidebar: #ffffff;
+  --bg-panel: rgba(255, 255, 255, 0.75);
+  --border-glow: rgba(99, 91, 219, 0.08);
+  --border-standard: rgba(9, 11, 17, 0.08);
+  
+  /* Text colors */
+  --text-main: #0f172a;
+  --text-muted: #57606a;
+  
+  /* Accent colors glow adjustments */
+  --color-primary-glow: rgba(99, 91, 219, 0.15);
+  
+  color-scheme: light;
+  color: var(--text-main);
+  background-color: var(--bg-app);
+}
+
+/* Light mode theme scrollbar & specific elements styling */
+body.light-mode ::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+body.light-mode ::-webkit-scrollbar-thumb {
+  background: #d0d7de;
+}
+body.light-mode .glass-panel {
+  background: var(--bg-panel);
+  box-shadow: 0 8px 32px 0 rgba(148, 163, 184, 0.12);
+  border: 1px solid var(--border-standard);
+}
+body.light-mode .glass-panel:hover {
+  border-color: rgba(127, 119, 221, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(127, 119, 221, 0.08);
+}
+body.light-mode .custom-table tr:hover {
+  background: rgba(9, 11, 17, 0.02);
+}
+body.light-mode .sidebar {
+  background: var(--bg-sidebar);
+}
+body.light-mode .modal-overlay {
+  background: rgba(241, 243, 249, 0.85);
+}
+body.light-mode .app-container {
+  background: radial-gradient(circle at 80% 20%, rgba(127, 119, 221, 0.05) 0%, rgba(241, 243, 249, 0) 50%),
+              radial-gradient(circle at 10% 80%, rgba(226, 75, 74, 0.03) 0%, rgba(241, 243, 249, 0) 50%);
+}
+
+/* High-contrast overrides for Light Mode hardcoded colors */
+body.light-mode h3,
+body.light-mode h2,
+body.light-mode h1,
+body.light-mode h4 {
+  color: var(--text-main) !important;
+}
+
+body.light-mode [style*="color: #fff"],
+body.light-mode [style*="color:#fff"],
+body.light-mode [style*="color: #f0f6fc"],
+body.light-mode [style*="color:#f0f6fc"],
+body.light-mode [style*="color: #e2e8f0"],
+body.light-mode [style*="color:#e2e8f0"],
+body.light-mode [style*="color: #cbd5e1"],
+body.light-mode [style*="color:#cbd5e1"],
+body.light-mode [style*="color: rgb(240, 246, 252)"],
+body.light-mode [style*="color:rgb(240,246,252)"],
+body.light-mode [style*="color: rgb(255, 255, 255)"],
+body.light-mode [style*="color:rgb(255,255,255)"],
+body.light-mode [style*="color: rgb(226, 232, 240)"],
+body.light-mode [style*="color:rgb(226,232,240)"],
+body.light-mode [style*="color: rgb(203, 213, 225)"],
+body.light-mode [style*="color:rgb(203,213,225)"] {
+  color: var(--text-main) !important;
+}
+
+body.light-mode [style*="color: #8892b0"],
+body.light-mode [style*="color:#8892b0"],
+body.light-mode [style*="color: rgb(136, 146, 176)"],
+body.light-mode [style*="color:rgb(136,146,176)"] {
+  color: var(--text-muted) !important;
+}
+
+/* Specific structural fixes to prevent low contrast in custom-table */
+body.light-mode .custom-table td[style*="monospace"] {
+  color: var(--text-main) !important;
+}
+body.light-mode .custom-table td div[style*="600"]:not([style*="color-primary"]):not([style*="var(--color-primary)"]) {
+  color: var(--text-main) !important;
+}
+body.light-mode .custom-table div[style*="background: rgba(240, 246, 252, 0.05)"],
+body.light-mode .custom-table div[style*="background:rgba(240,246,252,0.05)"] {
+  background: rgba(9, 11, 17, 0.08) !important;
+}
+
+/* Network Parameters Grid text visibility */
+body.light-mode .network-params-grid > div > div:nth-child(2) {
+  color: var(--text-main) !important;
+}
+
+/* AI Details Grid text visibility */
+body.light-mode .ai-details-grid > div > div:nth-child(2) {
+  color: var(--text-main) !important;
+}
+body.light-mode .ai-details-grid > div > div:nth-child(2)[style*="color-primary"],
+body.light-mode .ai-details-grid > div > div:nth-child(2)[style*="var(--color-primary)"] {
+  color: var(--color-primary) !important;
+}
+
+/* AI Summary callout styling */
+body.light-mode .analyzer-right-col p {
+  color: var(--text-main) !important;
+  background: rgba(9, 11, 17, 0.02) !important;
+}
+
+/* Interactive Checklist Items styling */
+body.light-mode .analyzer-right-col input[type="checkbox"] + span {
+  color: var(--text-main) !important;
+}
+body.light-mode .analyzer-right-col input[type="checkbox"]:checked + span {
+  color: var(--text-muted) !important;
+}
+body.light-mode .analyzer-right-col div[onClick]:not([style*="rgba(29"]) {
+  background: rgba(9, 11, 17, 0.02) !important;
+  border-color: var(--border-standard) !important;
+}
+
+/* XGBoost Probabilities Progress Bar Tracks visibility */
+body.light-mode .glass-panel div[style*="background: rgba(240, 246, 252, 0.04)"],
+body.light-mode .glass-panel div[style*="background:rgba(240,246,252,0.04)"] {
+  background: rgba(9, 11, 17, 0.08) !important;
+}
+
+/* Input text fields, password fields, range sliders and textarea in light mode */
+body.light-mode input[type="text"],
+body.light-mode input[type="password"],
+body.light-mode textarea {
+  background: #ffffff !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-standard) !important;
+}
+
+body.light-mode input[type="range"] {
+  background: rgba(9, 11, 17, 0.1) !important;
+}
+
+/* Pre-formatted code blocks in light mode */
+body.light-mode pre {
+  background: #f8fafc !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-standard) !important;
+}
+
+body.light-mode pre code,
+body.light-mode pre span {
+  color: var(--text-main) !important;
+}
+
+/* Metric card numbers in dashboard */
+body.light-mode .glass-panel div[style*="color: rgb(240, 246, 252)"],
+body.light-mode .glass-panel div[style*="color: #f0f6fc"],
+body.light-mode .glass-panel div[style*="f0f6fc"],
+body.light-mode .glass-panel div[style*="240, 246, 252"] {
+  color: var(--text-main) !important;
+}
+
+/* Specific button styles in light mode */
+body.light-mode button[style*="background: rgba(9, 11, 17"],
+body.light-mode button[style*="background:rgba(9,11,17"] {
+  background: #e2e8f0 !important;
+}
+
+body.light-mode button[style*="background: rgba(240, 246, 252"],
+body.light-mode button[style*="background:rgba(240,246,252"] {
+  background: #e2e8f0 !important;
+  color: var(--text-main) !important;
+}
+
+body.light-mode button[style*="color: #fff"],
+body.light-mode button[style*="color: rgb(255, 255, 255)"] {
+  color: var(--text-main) !important;
+}
+
+/* Maintain white text color on solid colored buttons in Light Mode */
+body.light-mode button[style*="background: var(--color-primary)"],
+body.light-mode button[style*="background:var(--color-primary)"],
+body.light-mode button[style*="background: var(--color-attack)"],
+body.light-mode button[style*="background:var(--color-attack)"] {
+  color: #ffffff !important;
+}
+
+/* Fix active simulation panel header */
+body.light-mode div[style*="background: rgba(9, 11, 17, 0.4)"] {
+  background: rgba(9, 11, 17, 0.04) !important;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-app);
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: #21262d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: var(--bg-panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-standard);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(127, 119, 221, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(127, 119, 221, 0.05);
+}
+
+/* Layout structure */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background: radial-gradient(circle at 80% 20%, rgba(127, 119, 221, 0.07) 0%, rgba(9, 11, 17, 0) 50%),
+              radial-gradient(circle at 10% 80%, rgba(226, 75, 74, 0.05) 0%, rgba(9, 11, 17, 0) 50%);
+}
+
+.sidebar {
+  width: 260px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-standard);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-normal {
+  background: rgba(29, 158, 117, 0.15);
+  color: var(--color-normal);
+  border: 1px solid rgba(29, 158, 117, 0.3);
+}
+
+.badge-fp {
+  background: rgba(239, 159, 39, 0.15);
+  color: var(--color-fp);
+  border: 1px solid rgba(239, 159, 39, 0.3);
+}
+
+.badge-attack {
+  background: rgba(226, 75, 74, 0.15);
+  color: var(--color-attack);
+  border: 1px solid rgba(226, 75, 74, 0.3);
+  animation: pulse-ring 2s infinite;
+}
+
+/* Animations */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(226, 75, 74, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(226, 75, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(226, 75, 74, 0);
+  }
+}
+
+.pulse-red {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-attack);
+  box-shadow: 0 0 0 0 rgba(226, 75, 74, 0.7);
+  animation: pulse-red-anim 1.5s infinite;
+  margin-right: 8px;
+}
+
+@keyframes pulse-red-anim {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(226, 75, 74, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(226, 75, 74, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(226, 75, 74, 0);
+  }
+}
+
+/* Table styling */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.custom-table th {
+  padding: 12px 16px;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border-standard);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.custom-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-standard);
+  font-size: 14px;
+}
+
+.custom-table tr:hover {
+  background: rgba(240, 246, 252, 0.015);
+}
+
+/* Tooltips & Modals */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(9, 11, 17, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Analyzer Layouts (Responsive Flex & Grid)
+   ========================================================================== */
+
+.analyzer-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+}
+
+.analyzer-left-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.analyzer-right-col {
+  width: 420px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: fit-content;
+}
+
+.network-params-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.ai-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* Default Input View Layout */
+.analyzer-input-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+}
+
+.analyzer-input-left {
+  flex: 3;
+  min-width: 0;
+}
+
+.analyzer-input-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Media Queries for Viewports (Laptops / Small Screens) */
+@media (max-width: 1300px) {
+  .analyzer-columns,
+  .analyzer-input-columns {
+    flex-direction: column;
+  }
+  
+  .analyzer-right-col,
+  .analyzer-input-left,
+  .analyzer-input-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .network-params-grid,
+  .ai-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
