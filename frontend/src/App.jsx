@@ -160,9 +160,9 @@ function App() {
       <aside className="sidebar">
         <div style={{ padding: '24px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-standard)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <Shield size={28} color="var(--color-primary)" style={{ filter: 'drop-shadow(0 0 8px var(--color-primary-glow))' }} />
+            <img src="/logo.png" alt="EXIA SOC-AI Logo" style={{ width: '32px', height: '32px', borderRadius: '6px', objectFit: 'cover', filter: 'drop-shadow(0 0 8px var(--color-primary-glow))' }} />
             <div>
-              <h2 style={{ fontSize: '18px', fontWeight: 700, letterSpacing: '0.02em' }}>SOC AI</h2>
+              <h2 style={{ fontSize: '16px', fontWeight: 700, letterSpacing: '0.02em', color: 'var(--text-main)' }}>EXIA SOC-AI</h2>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '2px' }}>
                 <span className={isConnected ? "pulse-red" : ""} style={{ width: '6px', height: '6px', background: isConnected ? 'var(--color-normal)' : 'var(--color-attack)', boxShadow: isConnected ? '0 0 8px var(--color-normal)' : 'none', margin: 0 }}></span>
                 <span style={{ fontSize: '10px', color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase' }}>
